@@ -25,7 +25,7 @@ export default async function Home() {
             <span className="w-auto px-6 py-3 rounded-full bg-secondary">
 
               <span className="text-sm font-medium text-primary">
-                Transform your thoughts into growth with our intuitive mood tracking and journaling tool.
+                Organise Your Thoughts.
               </span>
             </span>
 

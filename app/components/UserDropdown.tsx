@@ -1,12 +1,7 @@
 export const userDropdownItems = [
   {
-    name: "Profile",
-    href: "/user/profile",
-    icon: User,
-  },
-  {
     name: "Settings",
-    href: "/user/settings",
+    href: "dashboard/settings",
     icon: Settings,
   },
 ];
