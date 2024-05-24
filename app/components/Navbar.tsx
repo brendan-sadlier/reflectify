@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 
-import {RegisterLink, LoginLink, LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
-import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
+import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { UserDropdown } from "./UserDropdown";
+import { use } from "react";
 
 export async function Navbar() {
 
-  const { isAuthenticated } = getKindeServerSession();
+  const { isAuthenticated, getUser } = getKindeServerSession();
+  const user = await getUser();
 
   return (
 
@@ -22,18 +25,16 @@ export async function Navbar() {
           <ThemeToggle />
 
           {(await isAuthenticated()) ? (
-            <LogoutLink>
-              <Button>Log Out</Button>
-            </LogoutLink>
+            <UserDropdown email={user?.email as string} image={user?.picture as string} name={user?.given_name as string}/>
           ) : (
             <div className="flex items-center gap-x-5">
-            <LoginLink>
-              <Button>Sign In</Button>
-            </LoginLink>
-            <RegisterLink>
-              <Button variant="secondary">Sign Up</Button>
-            </RegisterLink>
-          </div>     
+              <LoginLink>
+                <Button>Sign In</Button>
+              </LoginLink>
+              <RegisterLink>
+                <Button variant="secondary">Sign Up</Button>
+              </RegisterLink>
+            </div>     
           )} 
 
         </div>
