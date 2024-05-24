@@ -1,5 +1,7 @@
 export interface UserDetails {
-  name: string;
+  id: string;
   email: string;
-  image: string;
+  firstName: string | undefined | null;
+  lastName: string | undefined | null;
+  profileImage: string | undefined | null;
 }

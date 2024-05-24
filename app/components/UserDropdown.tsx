@@ -23,7 +23,11 @@ import { UserDetails } from "@/lib/interface";
 import { getInitial } from "@/lib/utils";
 
 export function UserDropdown(
-  { name, email, image }: UserDetails
+  { name, email, profileImage }: {
+    name: string;
+    email: string;
+    profileImage: string;
+  }
 ) {
   return (
     <DropdownMenu>
@@ -32,7 +36,7 @@ export function UserDropdown(
         
         <Button variant="ghost"className="relative h-10 w-10 rounded-full">
           <Avatar className="h-10 w-10 rounded-full">
-            <AvatarImage src={image} alt="User Profile Image"/>
+            <AvatarImage src={profileImage} alt="User Profile Image"/>
             <AvatarFallback>{getInitial(name)}</AvatarFallback>
           </Avatar>
         </Button>

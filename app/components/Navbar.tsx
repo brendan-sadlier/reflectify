@@ -5,7 +5,6 @@ import { ThemeToggle } from "./ThemeToggle";
 import { RegisterLink, LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { UserDropdown } from "./UserDropdown";
-import { use } from "react";
 
 export async function Navbar() {
 
@@ -25,7 +24,7 @@ export async function Navbar() {
           <ThemeToggle />
 
           {(await isAuthenticated()) ? (
-            <UserDropdown email={user?.email as string} image={user?.picture as string} name={user?.given_name as string}/>
+            <UserDropdown email={user?.email as string} profileImage={user?.picture as string} name={user?.given_name as string}/>
           ) : (
             <div className="flex items-center gap-x-5">
               <LoginLink>
