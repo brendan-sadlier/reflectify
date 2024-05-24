@@ -1,5 +1,20 @@
 export const userDropdownItems = [
   {
+    name: "Home",
+    href: "/dashboard",
+    icon: Home,
+  },
+  {
+    name: "Mood Tracker",
+    href: "/dashboard/mood-tracker",
+    icon: Brain,
+  },
+  {
+    name: "Journal",
+    href: "/dashboard/journal",
+    icon: Notebook,
+  },
+  {
     name: "Settings",
     href: "dashboard/settings",
     icon: Settings,
@@ -9,8 +24,7 @@ export const userDropdownItems = [
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { navItems } from "./DashboardSidebar";
-import { DoorClosed, Settings, User } from "lucide-react";
+import { DoorClosed, Settings, Home, Brain, Notebook } from "lucide-react";
 import Link from "next/link";
 
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
