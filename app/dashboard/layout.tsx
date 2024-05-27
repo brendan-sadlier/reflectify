@@ -4,6 +4,7 @@ import { DashboardSidebar } from "../components/DashboardSidebar";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { UserDetails } from "@/lib/interface";
 import prisma from "@/lib/db";
+import { Toaster } from "@/components/ui/toaster";
 
 async function getUserData({email, id, firstName, lastName, profileImage}: {
   email: string;
@@ -66,6 +67,8 @@ export default async function DashboardLayout({children}: {children: React.React
         <main className="flex flex-col space-y-6">
           {children}
         </main>
+
+        <Toaster />
 
       </div>
 

@@ -124,7 +124,7 @@ export default async function SettingsPage() {
           </CardContent>
 
           <CardFooter>
-            <SubmitButton />
+            <SubmitButton buttonText="Save Changes"/>
           </CardFooter>
 
         </form>
