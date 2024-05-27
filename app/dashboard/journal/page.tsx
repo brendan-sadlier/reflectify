@@ -6,11 +6,12 @@ import Link from "next/link";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDate } from "@/lib/utils";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 import { DeleteEntryButton } from "@/app/components/SubmitButton";
 
 async function getJournalEntries(userId: string) {
+  noStore();
   const data = await prisma.journalEntry.findMany({
     where: {
       userId: userId

@@ -10,7 +10,10 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import { unstable_noStore as noStore } from "next/cache";
+
 async function getJournalEntry({ userId, journalEntryId }: { userId: string, journalEntryId: string }) {
+  noStore();
   const data = await prisma.journalEntry.findUnique({
     where: {
       id: journalEntryId,

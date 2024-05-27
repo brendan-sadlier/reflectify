@@ -43,30 +43,3 @@ export function toTitleCase(str: string) {
     }
   );
 }
-
-export function getEmotionColors(emotion: string) {
-  switch (emotion.toLowerCase()) {
-    case "happy":
-      return "bg-green-500 text-white"
-    case "excited":
-      return "bg-yellow-500 text-black"
-    case "calm":
-      return "bg-blue-500 text-white"
-    case "content":
-      return "bg-green-500 text-white"
-    case "sad":
-      return "bg-blue-500 text-white"
-    case "anxious":
-      return "bg-yellow-500 text-black"
-    case "stressed":
-      return "bg-red-500 text-white"
-    case "frustrated":
-      return "bg-red-500 text-white"
-    case "angry":
-      return "bg-red-500 text-white"
-    case "tired":
-      return "bg-gray-500 text-white"
-    default:
-      return "bg-gray-500 text-white"
-  }
-}

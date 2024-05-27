@@ -6,6 +6,8 @@ import { UserDetails } from "@/lib/interface";
 import prisma from "@/lib/db";
 import { Toaster } from "@/components/ui/toaster";
 
+import { unstable_noStore as noStore } from "next/cache";
+
 async function getUserData({email, id, firstName, lastName, profileImage}: {
   email: string;
   id: string;
@@ -13,6 +15,8 @@ async function getUserData({email, id, firstName, lastName, profileImage}: {
   lastName: string | undefined | null;
   profileImage: string | undefined | null;
 }) {
+
+  noStore();
   const user = await prisma.user.findUnique({
     where: {
       id: id

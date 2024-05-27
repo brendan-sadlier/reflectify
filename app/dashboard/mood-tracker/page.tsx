@@ -1,12 +1,13 @@
 import MoodInput from "@/app/components/MoodInput";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import prisma from "@/lib/db";
-import { formatDate, getEmotionColors, toTitleCase } from "@/lib/utils";
+import { formatDate, toTitleCase } from "@/lib/utils";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Brain } from "lucide-react";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getMoodEntries(userId: string) {
+  noStore();
   const data = await prisma.moodEntry.findMany({
     where: {
       userId: userId
