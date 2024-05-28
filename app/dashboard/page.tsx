@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { percentageIncreaseInJournalCount, percentageIncreaseInMoodCount, totalJournalCount, totalMoodCount } from "@/lib/analytics";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Brain, Notebook } from "lucide-react";
+import Link from "next/link";
 
 export default async function Dashboard() {
 
@@ -20,8 +21,16 @@ export default async function Dashboard() {
 
       <h1 className="font-bold col-span-2">Quick Actions</h1>
 
-      <Button className="col-span-1">Log a Mood</Button>
-      <Button className="w-full">Write a Journal Entry</Button>
+      <Button className="col-span-1">
+        <Link href="/dashboard/mood-tracker">
+          Log a Mood
+        </Link>
+        </Button>
+      <Button className="w-full">
+        <Link href="/dashboard/new-journal-entry">
+          Write a Journal Entry
+        </Link>  
+      </Button>
 
       <h1 className="col-span-2">Stats</h1>
 
