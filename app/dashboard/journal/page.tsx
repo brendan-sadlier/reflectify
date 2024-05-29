@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/db";
-import { Delete, Edit, Notebook, NotebookIcon, NotebookPenIcon, Pencil, Trash, Trash2 } from "lucide-react";
+import { Delete, Edit, Eye, Notebook, NotebookIcon, NotebookPenIcon, Pencil, Trash, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -29,20 +29,6 @@ export default async function JournalPage() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   const userJournalEntries = await getJournalEntries(user?.id as string);
-
-  async function deleteJournalEntry(formData: FormData) {
-    "use server"
-
-    const journalEntryId = formData.get("journalEntryId") as string;
-
-    await prisma.journalEntry.delete({
-      where: {
-        id: journalEntryId
-      }
-    })
-
-    revalidatePath('/dashboard/journal')
-  }
 
   return (
     <div className="grid items-start gap-y-8">
@@ -76,7 +62,7 @@ export default async function JournalPage() {
         <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
 
           {userJournalEntries.map((entry) => (
-            <Card key={entry.id} className="xl:col-span-2">
+            <Card key={entry.id} className="col-span-2 xl:col-span-3">
 
               <CardHeader className="flex flex-row items-center">
                 <div className="grid gap-2">
@@ -84,6 +70,16 @@ export default async function JournalPage() {
                   <CardDescription>{formatDate(entry.createdAt)}</CardDescription>
                 </div>
 
+                <Button asChild size="icon" className="ml-auto gap-1 mr-2">
+
+                  <Link href={`/dashboard/journal/view-journal/${entry.id}`}>
+                    <Button size="icon">
+                      <Eye className="w-4 h-4"/>
+                    </Button>
+                  </Link>
+
+                </Button>
+{/* 
                 <Button asChild size="icon" className="ml-auto gap-1 mr-2">
 
                   <Link href={`/dashboard/new-journal-entry/${entry.id}`}>
@@ -97,13 +93,13 @@ export default async function JournalPage() {
                 <form action={deleteJournalEntry}>
                     <input type="hidden" name="journalEntryId" value={entry.id} />
                     <DeleteEntryButton />
-                </form>
+                </form> */}
 
               </CardHeader>
 
               <CardContent>
                   
-                <p>
+                <p className="line-clamp-3 text-sm">
                   {entry.body}
                 </p>
 

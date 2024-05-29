@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import { DashboardSidebar } from "../components/DashboardSidebar";
 
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { UserDetails } from "@/lib/interface";
 import prisma from "@/lib/db";
 import { Toaster } from "@/components/ui/toaster";
 
